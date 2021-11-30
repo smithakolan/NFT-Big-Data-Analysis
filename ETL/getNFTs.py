@@ -13,14 +13,15 @@ def get_dapps(slug_name, offset):
     url = f'https://api.opensea.io/api/v1/assets?order_by=sale_count&order_direction=desc&offset={offset}&limit=28&collection={slug_name}'
     print(url)
     response = requests.request('GET', url, headers=headers)
-    # print(response.json())
+    print(response.status_code)
 
     if response.status_code != 200:
         if response.status_code == 404:
             print('Not found for {0} '.format(slug_name))
             return None
         else:
-            raise Exception('API Hit Failed', response)
+            #raise Exception('API Hit Failed', response)
+            print('API Hit Failed', response)
     return response
 
 
@@ -32,26 +33,15 @@ def main():
     # call api for every slug name on the list
     for slug_name in slug_names_list:
         i = 0
-        while(i < 1000):
+        while(i < 150):
             response = get_dapps(slug_name, i)
             data = response.json()
             if(data['assets'] and len(data['assets']) > 0):
                 response_list.append(data['assets'])
                 print(len(data['assets']))
-            if(i % 84 == 0):
-                time.sleep(30)
+                json_rdd = sc.parallelize(data['assets'])
+                json_rdd.map(json.dumps).saveAsTextFile(slug_name+str(i))
             i = i+28
-
-    # flatten response_list
-    nfts = []
-    for sublist in response_list:
-        for item in sublist:
-            nfts.append(item)
-
-    #print('NFTs :', nfts)
-
-    json_rdd = sc.parallelize(nfts)
-    json_rdd.map(json.dumps).saveAsTextFile('nft1')
 
 
 if __name__ == '__main__':

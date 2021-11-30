@@ -4,7 +4,7 @@ collection_slug_names = [
     "cryptopunks",
     "decentraland",
     "boredapeyachtclub",
-    "mutantapeyachtclub",
+    "mutant-ape-yacht-club",
     "meebits",
     "loot",
     "cool-cats-nft",
