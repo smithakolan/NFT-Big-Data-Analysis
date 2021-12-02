@@ -51,11 +51,9 @@ def main():
     # print(nft_selected.take(1))
 
     jsonRDD = nft_selected.map(json.dumps)
-
-    # reduce to one big string with one json on each line
     json_string = jsonRDD.reduce(lambda x, y: x + "\n" + y)
 
-    # write your string to a file
+    # writing to a local file
     with open("/home/swaathi/bigdataproject/nfts.json", "wb") as f:
         f.write(json_string.encode("utf-8"))
 
