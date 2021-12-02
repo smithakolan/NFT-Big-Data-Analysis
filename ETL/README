@@ -1,0 +1,29 @@
+## Cleaned NFT Format
+
+{
+  "id": Number,
+  "token_id": String,
+  "num_sales": Number,
+  "nft_name": String,
+  "contract_address": String,
+  "contract_created_date": String - TimeStamp,
+  "collection_name": String,
+  "nft_version": String,
+  "collection_symbol": String,
+  "slug": String,
+  "traits": [
+    {
+      "trait_type": String,
+      "value": Number,
+      "display_type": null,
+      "max_value": String,
+      "trait_count": Number,
+      "order": null
+    }
+  ],
+  "last_sale_payment_token_symbol": String,
+  "last_sale_event_type": String,
+  "last_sale_event_timestamp": String - TimeStamp,
+  "last_sale_auction_type": null,
+  "last_sale_total_price": Number
+}
