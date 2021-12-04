@@ -6,7 +6,6 @@ assert sys.version_info >= (3, 5)  # make sure we have Python 3.5+
 
 
 def get_cleaned_nft(nft_object):
-    print(nft_object)
     if(nft_object['last_sale'] != None):
         return True
     else:
@@ -23,6 +22,7 @@ def get_selective_fields(nft_object):
             'token_id': nft_object['token_id'],
             'num_sales': nft_object['num_sales'],
             'nft_name': nft_object['name'],
+            'image_url': nft_object['image_url'],
             'contract_address': nft_object['asset_contract']['address'],
             'contract_created_date': nft_object['asset_contract']['created_date'],
             'collection_name': nft_object['asset_contract']['name'],
