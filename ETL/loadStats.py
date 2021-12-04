@@ -10,29 +10,21 @@ dynamodb = boto3.resource(
     aws_secret_access_key=aws_keys.ACCESS_KEY, region_name='us-west-2', endpoint_url=aws_db_url)
 
 
-def create_nft_table():
+def create_stats_table():
 
     table = dynamodb.create_table(
-        TableName='NFTs',
+        TableName='Stats',
         KeySchema=[
             {
                 'AttributeName': 'slug',
                 'KeyType': 'HASH'  # Partition key
-            },
-            {
-                'AttributeName': 'token_id',
-                'KeyType': 'RANGE'  # Sort key
             }
         ],
         AttributeDefinitions=[
             {
-                'AttributeName': 'token_id',
-                'AttributeType': 'S'
-            },
-            {
                 'AttributeName': 'slug',
                 'AttributeType': 'S'
-            },
+            }
         ],
         ProvisionedThroughput={
             'ReadCapacityUnits': 10,
@@ -42,27 +34,25 @@ def create_nft_table():
     return table
 
 
-def insert_into_table(nfts):
-    table = dynamodb.Table('NFTs')
-    for nft in nfts:
-        slug = nft['slug']
-        token_id = nft['token_id']
-        print("Adding NFT:", slug, token_id)
-        table.put_item(Item=nft)
-        time.sleep(1)
+def insert_into_table(stats):
+    table = dynamodb.Table('Stats')
+    for stat in stats:
+        slug = stat['slug']
+        print("Adding Stat for:", slug)
+        table.put_item(Item=stat)
 
 
 if __name__ == '__main__':
     # Create Table
-    nft_table = create_nft_table()
-    print("Table status:", nft_table.table_status)
+    stats_table = create_stats_table()
+    print("Table status:", stats_table.table_status)
 
     # to wait for the table to get created
     time.sleep(60)
 
     # read json file
-    with open("nfts.json") as json_file:
-        nft_list = json.load(json_file, parse_float=Decimal)
+    with open("stats.json") as json_file:
+        stats_list = json.load(json_file, parse_float=Decimal)
 
     # insert into table
-    insert_into_table(nft_list)
+    insert_into_table(stats_list)
