@@ -58,7 +58,7 @@ if __name__ == '__main__':
 
     # read json file
     with open("nfts.json") as json_file:
-        movie_list = json.load(json_file, parse_float=Decimal)
+        nft_list = json.load(json_file, parse_float=Decimal)
 
     # insert into table
-    insert_into_table(movie_list)
+    insert_into_table(nft_list)
