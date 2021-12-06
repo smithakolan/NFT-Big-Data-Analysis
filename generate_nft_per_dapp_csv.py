@@ -19,7 +19,7 @@ slugcountDF = pd.DataFrame(columns=['slug', 'NFTcount'])
 slug_names_list = cdapps.collection_slug_names
   
 print(data[201]["slug"])  
-
+totalnft = 0
 j = 0
 for i in range(0,len(slug_names_list)):
     NFTcount = 0
@@ -30,14 +30,13 @@ for i in range(0,len(slug_names_list)):
         NFTcount = NFTcount +1
         j = j+1
     
-    
-    print(j)
+    totalnft = totalnft + NFTcount
     slugcountDF.loc[i] = [slug_names_list[i], NFTcount]
-    j = j+1  
+     
    
     
 print(slugcountDF)  
-print(data[5200]["slug"]) 
+slugcountDF.to_csv('nftperdapp.csv', index_label=False, )
 """
 0-199
 200-398
