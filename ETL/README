@@ -5,7 +5,7 @@
   "token_id": String,
   "num_sales": Number,
   "nft_name": String,
-  "img_url": String,
+  "image_url": String,
   "contract_address": String,
   "contract_created_date": String - TimeStamp,
   "collection_name": String,
