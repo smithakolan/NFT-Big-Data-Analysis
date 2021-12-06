@@ -2,7 +2,7 @@ import boto3
 import json
 import aws_key as aws_keys
 from decimal import Decimal
-
+import time
 local_db_url = 'http://localhost:8000'
 aws_db_url = 'https://dynamodb.us-west-2.amazonaws.com'
 dynamodb = boto3.resource(
@@ -49,12 +49,16 @@ def insert_into_table(nfts):
         token_id = nft['token_id']
         print("Adding NFT:", slug, token_id)
         table.put_item(Item=nft)
+        time.sleep(1)
 
 
 if __name__ == '__main__':
     # Create Table
     nft_table = create_nft_table()
     print("Table status:", nft_table.table_status)
+
+    # to wait for the table to get created
+    time.sleep(60)
 
     # read json file
     with open("nfts.json") as json_file:
