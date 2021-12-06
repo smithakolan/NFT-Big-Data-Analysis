@@ -50,7 +50,7 @@ def remove_duplicates(dappName):
     nft_json = nft_text.map(lambda line: json.loads(line))
     nft_key_value = nft_json.map(lambda line: (line['id'], line))
     non_duplicate_nfts = nft_key_value.reduceByKey(lambda x, y: x)
-    non_duplicate_nfts = nft_key_value.map(store_values)
+    non_duplicate_nfts = non_duplicate_nfts.map(store_values)
     non_duplicate_nfts = non_duplicate_nfts.take(200)
     return non_duplicate_nfts
 
