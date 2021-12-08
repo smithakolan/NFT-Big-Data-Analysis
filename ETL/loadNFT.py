@@ -11,7 +11,10 @@ dynamodb = boto3.resource(
 
 
 def create_nft_table():
-
+    """
+    create_nft_table - creates nfts table in Dyanmo DB
+    :return: table status
+    """
     table = dynamodb.create_table(
         TableName='NFTs',
         KeySchema=[
@@ -20,14 +23,14 @@ def create_nft_table():
                 'KeyType': 'HASH'  # Partition key
             },
             {
-                'AttributeName': 'token_id',
+                'AttributeName': 'id',
                 'KeyType': 'RANGE'  # Sort key
             }
         ],
         AttributeDefinitions=[
             {
-                'AttributeName': 'token_id',
-                'AttributeType': 'S'
+                'AttributeName': 'id',
+                'AttributeType': 'N'
             },
             {
                 'AttributeName': 'slug',
@@ -36,32 +39,33 @@ def create_nft_table():
         ],
         ProvisionedThroughput={
             'ReadCapacityUnits': 10,
-            'WriteCapacityUnits': 10
+            'WriteCapacityUnits': 20
         }
     )
     return table
 
 
 def insert_into_table(nfts):
+    """
+    insert_into_table - inserts data into stats table
+    :param nfts: nfts data
+    """
     table = dynamodb.Table('NFTs')
     for nft in nfts:
-        slug = nft['slug']
-        token_id = nft['token_id']
-        print("Adding NFT:", slug, token_id)
         table.put_item(Item=nft)
+        # to avoid write throttle
         time.sleep(1)
 
 
 if __name__ == '__main__':
     # Create Table
     nft_table = create_nft_table()
-    print("Table status:", nft_table.table_status)
 
     # to wait for the table to get created
     time.sleep(60)
 
     # read json file
-    with open("nfts.json") as json_file:
+    with open("R:/BigDataLab/Project/NFT-Big-Data-Analysis/ETL/nfts.json") as json_file:
         nft_list = json.load(json_file, parse_float=Decimal)
 
     # insert into table
