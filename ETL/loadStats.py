@@ -11,7 +11,10 @@ dynamodb = boto3.resource(
 
 
 def create_stats_table():
-
+    """
+    create_stats_table - creates stats table in Dyanmo DB
+    :return: table status
+    """
     table = dynamodb.create_table(
         TableName='Stats',
         KeySchema=[
@@ -35,17 +38,19 @@ def create_stats_table():
 
 
 def insert_into_table(stats):
+
+    """
+    insert_into_table - inserts data into stats table
+    :param stats: stats data
+    """
     table = dynamodb.Table('Stats')
     for stat in stats:
-        slug = stat['slug']
-        print("Adding Stat for:", slug)
         table.put_item(Item=stat)
 
 
 if __name__ == '__main__':
     # Create Table
     stats_table = create_stats_table()
-    print("Table status:", stats_table.table_status)
 
     # to wait for the table to get created
     time.sleep(60)

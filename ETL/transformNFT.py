@@ -6,6 +6,11 @@ assert sys.version_info >= (3, 5)  # make sure we have Python 3.5+
 
 
 def get_cleaned_nft(nft_object):
+    """
+    get_cleaned_nft - selects NFTS only with the last_sale value not none
+    :param nft_object: single nft 
+    :return: true or false
+    """
     if(nft_object['last_sale'] != None):
         return True
     else:
@@ -13,6 +18,12 @@ def get_cleaned_nft(nft_object):
 
 
 def get_selective_fields(nft_object):
+    """
+    get_selective_fields - retrieves required fields from a nft object
+
+    :param nft_object: single nft object
+    :return: returns a new nft object with only required fields
+    """
     if(nft_object != None):
         total_price = nft_object['last_sale']['total_price']
         decimal = nft_object['last_sale']['payment_token']['decimals']
@@ -41,11 +52,21 @@ def get_selective_fields(nft_object):
 
 
 def store_values(line):
+    """
+    store_values - selects only value part of <k,v>
+    :param line: single nft object as <k=id,v =nft_object> 
+    :return: nft object
+    """
     k, v = line
     return v
 
 
 def remove_duplicates(dappName):
+    """
+    remove_duplicates - removes duplicate nfts
+    :param dappName: name of the nft collection 
+    :return: nfts that do not have duplicates
+    """
     nft_text = sc.textFile("rawnftdata/"+dappName+"*")
     nft_json = nft_text.map(lambda line: json.loads(line))
     nft_key_value = nft_json.map(lambda line: (line['id'], line))

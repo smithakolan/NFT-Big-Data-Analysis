@@ -5,12 +5,18 @@ local_db_url = 'http://localhost:8000'
 aws_db_url = 'https://dynamodb.us-west-2.amazonaws.com'
 dynamodb = boto3.resource(
     'dynamodb', aws_access_key_id=aws_keys.ACCESS_ID,
-    aws_secret_access_key=aws_keys.ACCESS_KEY, region_name='us-west-2', endpoint_url=aws_db_url)
+    aws_secret_access_key=aws_keys.ACCESS_KEY, region_name='us-west-2', endpoint_url=local_db_url)
 
 table_name = 'NFTs'
 
 
 def scan_dynamodb(table_name):
+    """
+    scan_dynamodb - retrieves data from DynamoDB tables
+
+    :param table_name: the name of the table to retrieve
+    :return: data from table as list
+    """
     table = dynamodb.Table(table_name)
     nfts = []
     scan_kwargs = {}
