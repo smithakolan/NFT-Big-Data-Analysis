@@ -19,14 +19,21 @@ nftPerDapp = pd.read_csv('nftperdapp.csv')
 nftCount = 0
 dappCount = 0
 
+"""
+1. Calculating rarity for each NFT
+2. Create a new pandas dataframe for each Dapp which contains ['id','token_id', 'nft_name', 'image_url', 'slug', 'last_sale_total_price', 'rarity']
+3. Rarity is calculated by looking at count of attributes as well as the number of sales of the NFT & last_sale_total_price
+4. At the end, a csv is created for each Dapp.
 
-#Calculating rarity for each NFT
+
+"""
+
 
 for dapp in nftPerDapp.iterrows():
     
     dfObj = pd.DataFrame(columns=['id','token_id', 'nft_name', 'image_url', 'slug', 'last_sale_total_price', 'rarity'])
-    #print(nftCount)
-    #print(dapp[1][1]+nftCount)
+    
+    
     for i in range(nftCount, dapp[1][1]+nftCount):
         
         numberOfTraits = len(data[i]["traits"])
@@ -37,6 +44,9 @@ for dapp in nftPerDapp.iterrows():
             traitCount = data[i]["traits"][j]['trait_count']
             if(traitCount != 0):
                 rarity = rarity + 10000/(data[i]["traits"][j]['trait_count'])
+                
+        rarity = rarity + 5000*data[i]["num_sales"]
+        rarity = rarity*data[i]["last_sale_total_price"]*data[i]["last_sale_total_price"]
         
         
         #print(i)    
@@ -67,7 +77,5 @@ for dapp in nftPerDapp.iterrows():
 nftPerDapp.to_csv('top5NFTs.csv', index=False)
 #Save data back to JSON
 #Create dataframe for each dapp
-
-
 
 
