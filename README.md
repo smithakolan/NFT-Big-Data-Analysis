@@ -97,7 +97,7 @@ After the NFTs table creation and insertion:
 
 #### Trend - 1 Geethika
 <br /><br />
-#### Trend - 2 Smitha
+#### Rarity
 <br /><br />
 
 1. run generate_nft_per_dapp_csv.py file in order to generate a csv file which will contain dapp names along with 
@@ -110,9 +110,9 @@ file for each dapp as well as csv which will contains top 5 NFTs per dapp.
 
 4. Run NFTPriceRegression.py which does linear regression on rarity on each NFT in order to generate the predicted price
 
-#### Trend - 3 Smitha
+#### Top 5 NFTs Per Dapp
 <br /><br />
-#### Trend - 4 - Smitha
+#### Price prediction of NFTs using Machine Learning
 <br /><br />
 #### Correlation between the price of the NFT and the number of sales 
 
