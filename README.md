@@ -8,7 +8,7 @@ Add environment variables if not have been configured:
 
 ```bash
 export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
-export SPARK_HOME=/home/swaathi/spark-3.1.2-bin-hadoop3.2/
+export SPARK_HOME=/home/{user}/spark-3.1.2-bin-hadoop3.2/
 export PYSPARK_PYTHON=python3
 ```
 
@@ -66,7 +66,7 @@ The program produces a file called nfts.json
 
 <br /><br /><br />
 ### An AWS account has to be created and a Administrator User account should be created before proceeding to the next step. After creation, the AWS ACCESS_ID and ACCESS_KEY should be added to the ETL folder of the project as a python file.
-
+<br /><br />
 #### Loading of Stats to Database
 
 Command to run file: ETL\loadStats.py
