@@ -8,7 +8,7 @@ Add environment variables if not have been configured:
 
 ```bash
 export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
-export SPARK_HOME=/home/{user}/spark-3.1.2-bin-hadoop3.2/
+export SPARK_HOME=/home/swaathi/spark-3.1.2-bin-hadoop3.2/
 export PYSPARK_PYTHON=python3
 ```
 
@@ -66,7 +66,7 @@ The program produces a file called nfts.json
 
 <br /><br /><br />
 ### An AWS account has to be created and a Administrator User account should be created before proceeding to the next step. After creation, the AWS ACCESS_ID and ACCESS_KEY should be added to the ETL folder of the project as a python file.
-<br /><br />
+
 #### Loading of Stats to Database
 
 Command to run file: ETL\loadStats.py
@@ -99,6 +99,17 @@ After the NFTs table creation and insertion:
 <br /><br />
 #### Trend - 2 Smitha
 <br /><br />
+
+1. run generate_nft_per_dapp_csv.py file in order to generate a csv file which will contain dapp names along with 
+the number of NFTs in each dapp.
+
+Header of csv generated: 
+
+2. Run RarityCalculator.py which will calculate the rarity of each NFT. The output for this script will be a csv 
+file for each dapp as well as csv which will contains top 5 NFTs per dapp.
+
+4. Run NFTPriceRegression.py which does linear regression on rarity on each NFT in order to generate the predicted price
+
 #### Trend - 3 Smitha
 <br /><br />
 #### Trend - 4 - Smitha
