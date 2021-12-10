@@ -1,6 +1,11 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+@author: swaathi
+"""
 import collections_dapps as cdapps
 import json
-from pyspark.sql import SparkSession, functions, types
+from pyspark.sql import SparkSession
 import sys
 assert sys.version_info >= (3, 5)  # make sure we have Python 3.5+
 
@@ -101,7 +106,7 @@ def main():
     json_string = jsonRDD.reduce(lambda x, y: x + ",\n" + y)
 
     # writing to a local file
-    with open("/home/swaathi/bigdataproject/nfts.json", "wb") as f:
+    with open("nfts.json", "wb") as f:
         f.write(json_string.encode("utf-8"))
 
 

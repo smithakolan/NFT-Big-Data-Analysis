@@ -1,15 +1,18 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+@author: swaathi
+"""
 import requests
-import time
 import json
 import collections_dapps as cdapps
 from pyspark.sql import SparkSession, functions, types
 import sys
-import opensea_api as op
+import keys as op
 assert sys.version_info >= (3, 5)  # make sure we have Python 3.5+
 
 
 def get_nfts(slug_name, offset):
-    
     """
     get_nfts - retrieve nfts from Opensea API
 

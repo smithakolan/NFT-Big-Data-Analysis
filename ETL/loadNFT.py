@@ -1,6 +1,11 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+@author: swaathi
+"""
 import boto3
 import json
-import aws_key as aws_keys
+import keys as aws_keys
 from decimal import Decimal
 import time
 local_db_url = 'http://localhost:8000'
@@ -65,7 +70,7 @@ if __name__ == '__main__':
     time.sleep(60)
 
     # read json file
-    with open("R:/BigDataLab/Project/NFT-Big-Data-Analysis/ETL/nfts.json") as json_file:
+    with open("nfts.json") as json_file:
         nft_list = json.load(json_file, parse_float=Decimal)
 
     # insert into table
