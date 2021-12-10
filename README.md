@@ -101,22 +101,23 @@ After the NFTs table creation and insertion:
 <br /><br />
 
 1. Run [generate_nft_per_dapp_csv.py](https://github.com/smithakolan/NFT-Big-Data-Analysis/blob/main/Data_Analysis/generate_nft_per_dapp_csv.py) file in order to generate a csv file which will contain dapp names along with the number of NFTs in each dapp.
-
 csv file generated: [nftperdapp.csv](https://github.com/smithakolan/NFT-Big-Data-Analysis/blob/main/Data_Analysis/nftperdapp.csv)
 columns=['slug', 'NFTcount']
 
 2. Run [RarityCalculator.py](https://github.com/smithakolan/NFT-Big-Data-Analysis/blob/main/Data_Analysis/RarityCalculator.py) which will calculate the rarity of each NFT. The output for this will be a csv file for each dapp in the nftperdapp.csv.
 
 columns=['id','token_id', 'nft_name', 'image_url', 'slug', 'last_sale_total_price', 'rarity']
-<br /><br />
-
 
 #### Top 5 NFTs Per Dapp
+
+1. When runinng [RarityCalculator.py](https://github.com/smithakolan/NFT-Big-Data-Analysis/blob/main/Data_Analysis/RarityCalculator.py) an additional csv called [top5NFTs.csv](https://github.com/smithakolan/NFT-Big-Data-Analysis/blob/main/Datasets_for_visualization/top5NFTs.csv) is generated. It contains the top 5 NFTs per dapp.
+<br />
+columns=['slug', 'NFTcount', 'image_1', nft1_id', 'image_2', nft2_id', 'image_3', nft3_id', 'image_4', nft4_id', 'image_5', nft5_id']
 <br /><br />
 #### Price prediction of NFTs using Machine Learning
 <br /><br />
 
-4. Run NFTPriceRegression.py which does linear regression on rarity on each NFT in order to generate the predicted price
+Run NFTPriceRegression.py which does linear regression on rarity on each NFT in order to generate the predicted price
 <br /><br />
 #### Correlation between the price of the NFT and the number of sales 
 
