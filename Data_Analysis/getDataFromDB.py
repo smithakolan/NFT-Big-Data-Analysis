@@ -1,3 +1,8 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+@author: swaathi
+"""
 import boto3
 import aws_key as aws_keys
 

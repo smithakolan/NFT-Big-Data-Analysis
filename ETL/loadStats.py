@@ -1,3 +1,8 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+@author: swaathi
+"""
 import boto3
 import json
 import aws_key as aws_keys
@@ -38,7 +43,6 @@ def create_stats_table():
 
 
 def insert_into_table(stats):
-
     """
     insert_into_table - inserts data into stats table
     :param stats: stats data

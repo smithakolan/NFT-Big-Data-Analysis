@@ -1,3 +1,8 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+@author: Geethika
+"""
 import requests
 import time
 import json
@@ -9,14 +14,14 @@ assert sys.version_info >= (3, 5)  # make sure we have Python 3.5+
 
 def main():
     dapp_slug_names = cdapps.collection_slug_names
-    
+
     response_list = []
     headers = {"Accept": "application/json"}
 
     params = (
         ('limit', '1'),
     )
-    
+
     for slug in dapp_slug_names:
         slugStatsUrl = "https://api.opensea.io/api/v1/collection/" + slug + "/stats"
 

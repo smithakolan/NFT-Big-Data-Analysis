@@ -17,7 +17,6 @@ collection_slug_names = [
     "fidenza-by-tyler-hobbs",
     "hashmasks",
     "bored-ape-kennel-club",
-    # "cyberkongz",
     "veefriends",
     "creatureworld",
     "axie",

@@ -5,37 +5,36 @@ Created on Fri Dec  3 17:42:58 2021
 
 @author: smithakolan
 """
-
+import getDataFromDB as getNFT
 import json
 import csv
 import pandas as pd
 import collections_dapps as cdapps
+# get data from json file
+# with open('nfts.json') as f:
+#   data = json.load(f)
 
-with open('nfts.json') as f:
-  data = json.load(f)
-  
+# get data from DB
+data = getNFT.scan_dynamodb('NFTs')
 
 slugcountDF = pd.DataFrame(columns=['slug', 'NFTcount'])
 slug_names_list = cdapps.collection_slug_names
-  
-print(data[201]["slug"])  
+
+print(data[201]["slug"])
 totalnft = 0
 j = 0
-for i in range(0,len(slug_names_list)):
+for i in range(0, len(slug_names_list)):
     NFTcount = 0
-    
-    
 
-    while j<len(data) and (data[j]["slug"] == slug_names_list[i]):
-        NFTcount = NFTcount +1
+    while j < len(data) and (data[j]["slug"] == slug_names_list[i]):
+        NFTcount = NFTcount + 1
         j = j+1
-    
+
     totalnft = totalnft + NFTcount
     slugcountDF.loc[i] = [slug_names_list[i], NFTcount]
-     
-   
-    
-print(slugcountDF)  
+
+
+print(slugcountDF)
 slugcountDF.to_csv('nftperdapp.csv', index_label=False, )
 """
 0-199
@@ -44,4 +43,3 @@ slugcountDF.to_csv('nftperdapp.csv', index_label=False, )
 599-797
 
 """
-   
