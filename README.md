@@ -127,6 +127,6 @@ The program produces a file called nft_corr.csv
 <br /><br />
 ## Visualization and Results
 
-### Tableau visualization workbooks are located in Visualization_Tableau_Workbooks. Tableau Desktop/Public/Reader must be downloaded to view the workbooks. Otherwise, see the full visualization here:
+### Tableau visualization workbooks are located in Visualization_Tableau_Workbooks. Tableau Desktop/ Public/Reader must be downloaded to view the workbooks. Otherwise, see the full visualization here:
 
 
