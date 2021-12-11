@@ -103,8 +103,8 @@ Command to run file: Data_Analysis\analyse_stats.py
 time ${SPARK_HOME}/bin/spark-submit Data_Analysis\analyse_stats.py
 ```
 
-The program produces two files as output which can be found on HDFS.
-dapp_volume.json - Contains 1 Day, 7 Days and 30 Days Volume of NFT sold for the top 10 NFTs with respect to each of the Dapps.
+The program produces two files as output which can be found on HDFS. <br />
+dapp_volume.json - Contains 1 Day, 7 Days and 30 Days Volume of NFT sold for the top 10 NFTs with respect to each of the Dapps. <br />
 dapp_optimality.json - Contains optimality score of Dapps 
 <br /><br />
 #### Rarity
