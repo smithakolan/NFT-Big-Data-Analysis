@@ -8,7 +8,7 @@ Add environment variables if not have been configured:
 
 ```bash
 export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
-export SPARK_HOME=/home/swaathi/spark-3.1.2-bin-hadoop3.2/
+export SPARK_HOME=/home/{user}/spark-3.1.2-bin-hadoop3.2/
 export PYSPARK_PYTHON=python3
 ```
 
