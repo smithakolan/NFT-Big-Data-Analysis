@@ -8,7 +8,7 @@ Add environment variables if not have been configured:
 
 ```bash
 export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
-export SPARK_HOME=/home/swaathi/spark-3.1.2-bin-hadoop3.2/
+export SPARK_HOME=/home/{user}/spark-3.1.2-bin-hadoop3.2/
 export PYSPARK_PYTHON=python3
 ```
 
@@ -64,8 +64,8 @@ time ${SPARK_HOME}/bin/spark-submit ETL\transformNFT.py
 
 The program produces a file called nfts.json
 
-<br /><br /><br />
-### An AWS account has to be created and a Administrator User account should be created before proceeding to the next step. After creation, the AWS ACCESS_ID and ACCESS_KEY should be added to the ETL folder of the project as a python file.
+<br /><br />
+#### An AWS account has to be created and a Administrator User account should be created before proceeding to the next step. After creation, the AWS ACCESS_ID and ACCESS_KEY should be added to the ETL folder of the project as a python file.
 
 #### Loading of Stats to Database
 
@@ -95,7 +95,17 @@ After the NFTs table creation and insertion:
 <br /><br />
 ## Data Analysis
 
-#### Trend - 1 Geethika
+#### Dapp Trends
+
+Command to run file: Data_Analysis\analyse_stats.py
+
+```bash
+time ${SPARK_HOME}/bin/spark-submit Data_Analysis\analyse_stats.py
+```
+
+The program produces two files as output which can be found on HDFS. <br />
+dapp_volume.json - Contains 1 Day, 7 Days and 30 Days Volume of NFT sold for the top 10 NFTs with respect to each of the Dapps. <br />
+dapp_optimality.json - Contains optimality score of Dapps 
 <br /><br />
 #### Rarity
 
@@ -126,5 +136,5 @@ python3 Data_Analysis\nft_correlation_analysis.py
 The program produces a file called nft_corr.csv
 <br /><br />
 ## Visualization and Results
+Tableau visualization workbooks are located in Visualization_Tableau_Workbooks. Tableau Desktop/ Public/Reader must be downloaded to view the workbooks. Otherwise, see the full visualization here: https://public.tableau.com/app/profile/ha.do1817
 
--- Ha Do
